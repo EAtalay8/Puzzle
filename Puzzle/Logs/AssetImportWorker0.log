@@ -1,0 +1,148 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.10f1 (297d780c91bc) revision 2719096'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Pro; OS build 19042.1288; Version 2009; 64bit' Language: 'tr' Physical Memory: 15731 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Users\ekola\Desktop\Unity Projects\2020.3.10f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/ekola/Desktop/Unity Projects/PuzzleGame/Puzzle
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+65005
+Successfully changed project path to: C:/Users/ekola/Desktop/Unity Projects/PuzzleGame/Puzzle
+C:/Users/ekola/Desktop/Unity Projects/PuzzleGame/Puzzle
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 26.64 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.10f1 (297d780c91bc)
+[Subsystems] Discovering subsystems at path C:/Users/ekola/Desktop/Unity Projects/2020.3.10f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/ekola/Desktop/Unity Projects/PuzzleGame/Puzzle/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1660 Ti with Max-Q Design (ID=0x2191)
+    Vendor:   
+    VRAM:     5991 MB
+    Driver:   30.0.14.9649
+Initialize mono
+Mono path[0] = 'C:/Users/ekola/Desktop/Unity Projects/2020.3.10f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Users/ekola/Desktop/Unity Projects/2020.3.10f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Users/ekola/Desktop/Unity Projects/2020.3.10f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56632
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Users/ekola/Desktop/Unity Projects/2020.3.10f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001604 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 31.60 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.491 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.003719 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.33 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.870 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.32 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1442 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 66.6 MB.
+System memory in use after: 66.7 MB.
+
+Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 1879.
+Total: 2.629100 ms (FindLiveObjects: 0.223300 ms CreateObjectMapping: 0.061900 ms MarkObjects: 2.267100 ms  DeleteObjects: 0.075200 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/Scenes/Level4.unity
+  artifactKey: Guid(51f215f029b25f24ea04c2345470fe3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Level4.unity using Guid(51f215f029b25f24ea04c2345470fe3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73c50a8f66c32acc050854937fc7a89d') in 0.012969 seconds
+  Import took 0.015802 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000225 seconds.
+  path: Assets/Scenes/Level2.unity
+  artifactKey: Guid(05f01252e1a5ddd42aa315184942fd45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Level2.unity using Guid(05f01252e1a5ddd42aa315184942fd45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a28903d1268caee522e6746604fb78df') in 0.005443 seconds
+  Import took 0.007732 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000241 seconds.
+  path: Assets/Scenes/Level3.unity
+  artifactKey: Guid(a8dfdc1f5977e9c4392c86a9a2bb9755) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Level3.unity using Guid(a8dfdc1f5977e9c4392c86a9a2bb9755) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94070d7c22a555ba84badc4a900f737b') in 0.004088 seconds
+  Import took 0.006937 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 14.021014 seconds.
+  path: Assets/Scenes/Level1.unity
+  artifactKey: Guid(044b593b94d545744811dc9113d8fe5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Level1.unity using Guid(044b593b94d545744811dc9113d8fe5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bcd178eb01a907f51d08e803d14823a8') in 0.010889 seconds
+  Import took 0.013529 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 84.938814 seconds.
+  path: Assets/Scenes/Level3 1.unity
+  artifactKey: Guid(72036eb9a90ea7042b93f2f65330de79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Level3 1.unity using Guid(72036eb9a90ea7042b93f2f65330de79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73b9bee59125458a74adc8ac1da91e5b') in 0.006640 seconds
+  Import took 0.008717 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.075996 seconds.
+  path: Assets/Scenes/Level5.unity
+  artifactKey: Guid(72036eb9a90ea7042b93f2f65330de79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/Level5.unity using Guid(72036eb9a90ea7042b93f2f65330de79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f9bd4921ddac513246bb5119ae65ee9') in 0.006948 seconds
+  Import took 0.009439 seconds .
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003557 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.33 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.796 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.33 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1437 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 66.6 MB.
+System memory in use after: 66.7 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 1882.
+Total: 1.690700 ms (FindLiveObjects: 0.152500 ms CreateObjectMapping: 0.032500 ms MarkObjects: 1.449100 ms  DeleteObjects: 0.055100 ms)
+
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 3.38 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 14 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 38.5 MB.
+System memory in use after: 38.5 MB.
+
+Unloading 14 unused Assets to reduce memory usage. Loaded Objects now: 1882.
+Total: 1.823800 ms (FindLiveObjects: 0.153400 ms CreateObjectMapping: 0.031100 ms MarkObjects: 1.583400 ms  DeleteObjects: 0.054700 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

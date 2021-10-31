@@ -10,9 +10,7 @@ public class GameManager : MonoBehaviour
 
     public int isFirstLevelFirstlyCompleted;
 
-    public bool deneme = true;
-
-    public GameObject[] emptyPlaneArrays = new GameObject[2];
+    //public GameObject[] emptyPlaneArrays = new GameObject[2];
 
     private IEnumerator ai;
 
@@ -21,10 +19,26 @@ public class GameManager : MonoBehaviour
     public GameObject rivalManager;
     public GameObject swp;
 
+    [Header("Materials")]
+
+    public GameObject platObject;
+    public Material[] materials = new Material[3]; //for 3 materials
+    public int matIndex = 0;
+
+
     [Header("Panels")]
 
     public GameObject winPanel;
     public GameObject losePanel;
+
+    [Header("Cubes")]
+
+    public List<GameObject> cubeList = new List<GameObject>();
+
+    public List<GameObject> possiblePlayersListR = new List<GameObject>();
+    public List<GameObject> possiblePlayersListD = new List<GameObject>();
+    public List<GameObject> possiblePlayersListL = new List<GameObject>();
+    public List<GameObject> possiblePlayersListU = new List<GameObject>();
 
     [Header("Planes")]
 
@@ -48,8 +62,8 @@ public class GameManager : MonoBehaviour
 
     [Space(50)]
 
-    GameObject[] emptyObjs;
-    public GameObject[,] adjObjs = new GameObject[2, 4];
+    //GameObject[] emptyObjs;
+    public GameObject[,] adjObjs = new GameObject[7, 4];
 
     public static GameManager instance;
 
@@ -70,6 +84,267 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(matIndex);
+        Debug.Log(materials.Length);
+
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            if (matIndex >= materials.Length)
+                matIndex -= 3;
+            else
+                matIndex++;
+            
+            platObject.GetComponent<MeshRenderer>().material = materials[matIndex];
+
+            
+        }
+
+        for (int i = 0; i < 7; i++)
+        {
+            if (cubeList[i].GetComponent<Cubes>().planeList[0].GetComponent<Plane>().adjList[0].CompareTag("Empty"))
+            {
+                cubeList[i].GetComponent<Cubes>().rightEmpty = true;
+                //SwipeTest.instance.playerR = cubeList[i].transform;
+            }
+
+            else
+            {
+                cubeList[i].GetComponent<Cubes>().rightEmpty = false;
+            }
+
+            if (cubeList[i].GetComponent<Cubes>().planeList[0].GetComponent<Plane>().adjList[1].CompareTag("Empty"))
+            {
+                cubeList[i].GetComponent<Cubes>().downEmpty = true;
+                //SwipeTest.instance.playerD = cubeList[i].transform;
+            }
+
+            else
+            {
+                cubeList[i].GetComponent<Cubes>().downEmpty = false;
+            }
+
+            if (cubeList[i].GetComponent<Cubes>().planeList[0].GetComponent<Plane>().adjList[2].CompareTag("Empty"))
+            {
+                cubeList[i].GetComponent<Cubes>().leftEmpty = true;
+                //SwipeTest.instance.playerL = cubeList[i].transform;
+            }
+
+            else
+            {
+                cubeList[i].GetComponent<Cubes>().leftEmpty = false;
+            }
+
+            if (cubeList[i].GetComponent<Cubes>().planeList[0].GetComponent<Plane>().adjList[3].CompareTag("Empty"))
+            {
+                cubeList[i].GetComponent<Cubes>().upEmpty = true;
+                //SwipeTest.instance.playerU = cubeList[i].transform;
+            }
+
+            else
+            {
+                cubeList[i].GetComponent<Cubes>().upEmpty = false;
+            }
+
+
+
+           
+
+            if (cubeList[i].GetComponent<Cubes>().rightEmpty)
+            {
+                if (possiblePlayersListR.Count == 0)
+                    possiblePlayersListR.Add(cubeList[i]);
+
+                else if (possiblePlayersListR.Count == 1 && possiblePlayersListR[0] != cubeList[i])
+                    possiblePlayersListR.Add(cubeList[i]);
+            }
+
+            else
+                possiblePlayersListR.Remove(cubeList[i]);
+
+
+            if (cubeList[i].GetComponent<Cubes>().downEmpty)
+            {
+                if (possiblePlayersListD.Count == 0)
+                    possiblePlayersListD.Add(cubeList[i]);
+
+                else if (possiblePlayersListD.Count == 1 && possiblePlayersListD[0] != cubeList[i])
+                    possiblePlayersListD.Add(cubeList[i]);
+            }
+
+            else
+                possiblePlayersListD.Remove(cubeList[i]);
+
+            if (cubeList[i].GetComponent<Cubes>().leftEmpty)
+            {
+                if (possiblePlayersListL.Count == 0)
+                    possiblePlayersListL.Add(cubeList[i]);
+
+                else if (possiblePlayersListL.Count == 1 && possiblePlayersListL[0] != cubeList[i])
+                    possiblePlayersListL.Add(cubeList[i]);
+            }
+
+            else
+                possiblePlayersListL.Remove(cubeList[i]);
+
+            if (cubeList[i].GetComponent<Cubes>().upEmpty)
+            {
+                if (possiblePlayersListU.Count == 0)
+                    possiblePlayersListU.Add(cubeList[i]);
+
+                else if (possiblePlayersListU.Count == 1 && possiblePlayersListU[0] != cubeList[i])
+                    possiblePlayersListU.Add(cubeList[i]);
+            }
+
+            else
+                possiblePlayersListU.Remove(cubeList[i]);
+
+            
+
+
+        }
+
+        if (possiblePlayersListR.Count == 1)
+        {
+            SwipeTest.instance.playerR = possiblePlayersListR[0].transform;
+        }
+
+        else if (possiblePlayersListR.Count == 2)
+        {
+            if (possiblePlayersListR[0].transform.position.z > possiblePlayersListR[1].transform.position.z)
+            {
+                if (Input.mousePosition.y > 960)
+                {
+                    SwipeTest.instance.playerR = possiblePlayersListR[0].transform;
+                }
+
+                else
+                    SwipeTest.instance.playerR = possiblePlayersListR[1].transform;
+            }
+            else
+            {
+                if (Input.mousePosition.y < 960)
+                {
+                    SwipeTest.instance.playerR = possiblePlayersListR[0].transform;
+                }
+
+                else
+                    SwipeTest.instance.playerR = possiblePlayersListR[1].transform;
+            }
+        }
+
+
+        if (possiblePlayersListD.Count == 1)
+        {
+            SwipeTest.instance.playerD = possiblePlayersListD[0].transform;
+        }
+
+        else if (possiblePlayersListD.Count == 2)
+        {
+            if (possiblePlayersListD[0].transform.position.x > possiblePlayersListD[1].transform.position.x)
+            {
+                if (Input.mousePosition.x > 540)
+                {
+                    SwipeTest.instance.playerD = possiblePlayersListD[0].transform;
+                }
+
+                else
+                    SwipeTest.instance.playerD = possiblePlayersListD[1].transform;
+            }
+            else
+            {
+                if (Input.mousePosition.x < 540)
+                {
+                    SwipeTest.instance.playerD = possiblePlayersListD[0].transform;
+                }
+
+                else
+                    SwipeTest.instance.playerD = possiblePlayersListD[1].transform;
+            }
+        }
+
+
+        if (possiblePlayersListL.Count == 1)
+        {
+            SwipeTest.instance.playerL = possiblePlayersListL[0].transform;
+        }
+
+        else if (possiblePlayersListL.Count == 2)
+        {
+            if (possiblePlayersListL[0].transform.position.z > possiblePlayersListL[1].transform.position.z)
+            {
+                if (Input.mousePosition.y > 960)
+                {
+                    SwipeTest.instance.playerL = possiblePlayersListL[0].transform;
+                }
+
+                else
+                    SwipeTest.instance.playerL = possiblePlayersListL[1].transform;
+            }
+            else
+            {
+                if (Input.mousePosition.y < 960)
+                {
+                    SwipeTest.instance.playerL = possiblePlayersListL[0].transform;
+                }
+
+                else
+                    SwipeTest.instance.playerL = possiblePlayersListL[1].transform;
+            }
+        }
+
+
+        if (possiblePlayersListU.Count == 1)
+        {
+            SwipeTest.instance.playerU = possiblePlayersListU[0].transform;
+        }
+
+        else if (possiblePlayersListU.Count == 2)
+        {
+            if (possiblePlayersListU[0].transform.position.x > possiblePlayersListU[1].transform.position.x)
+            {
+                if (Input.mousePosition.x > 540)
+                {
+                    SwipeTest.instance.playerU = possiblePlayersListU[0].transform;
+                }
+
+                else
+                    SwipeTest.instance.playerU = possiblePlayersListU[1].transform;
+            }
+            else
+            {
+                if (Input.mousePosition.x < 540)
+                {
+                    SwipeTest.instance.playerU = possiblePlayersListU[0].transform;
+                }
+
+                else
+                    SwipeTest.instance.playerU = possiblePlayersListU[1].transform;
+            }
+        }
+
+
+        //Debug.Log(Input.mousePosition);
+
+        if (!SwipeTest.instance.playerR.GetComponent<Cubes>().rightEmpty)
+        {
+            SwipeTest.instance.playerR = null;
+        }
+
+        if (!SwipeTest.instance.playerD.GetComponent<Cubes>().downEmpty)
+        {
+            SwipeTest.instance.playerD = null;
+        }
+
+        if (!SwipeTest.instance.playerL.GetComponent<Cubes>().leftEmpty)
+        {
+            SwipeTest.instance.playerL = null;
+        }
+
+        if (!SwipeTest.instance.playerU.GetComponent<Cubes>().upEmpty)
+        {
+            SwipeTest.instance.playerU = null;
+        }
+
         //Debug.Log(Input.mousePosition);
 
         if (p1.GetComponent<Plane>().playerList.Count != 0)
@@ -127,135 +402,6 @@ public class GameManager : MonoBehaviour
         {
             obj7 = null;
         }
-
-
-
-
-
-        emptyObjs = GameObject.FindGameObjectsWithTag("Empty");
-
-        for (int i = 0; i < 2; i++)
-        {
-            //lightuser.GetComponent<light>().enabled = false;
-
-            //Debug.Log(emptyPlane.transform.name);
-
-            emptyPlaneArrays[i] = emptyObjs[i];
-        }
-
-        for (int i = 0; i < 2; i++)
-        {
-            //Debug.Log(emptyPlaneArrays[i].name + " boþlar");
-            for (int j = 0; j < 4; j++)
-            {
-                
-                //Debug.Log(emptyPlaneArrays[i].GetComponent<Plane>().adjList[j] + " komþusudur " + emptyPlaneArrays[i].name);
-
-                adjObjs[i, j] = GameObject.Find(emptyPlaneArrays[i].GetComponent<Plane>().adjList[j].ToString());
-
-                Debug.Log(i+1 + " . " + (j+1) +" elemaný "+ adjObjs[i, j].name);
-
-                //Debug.Log(adjObjs[j].name);
-
-                if (SwipeTest.instance.swpR && adjObjs[i, 2].CompareTag("Occupied") && adjObjs[i, 2].name != "0")
-                {
-                    if (Input.mousePosition.y > 540 && adjObjs[0, 2].name != "0")
-                        adjObjs[0, 2].GetComponent<Plane>().swtchPlayer = true;
-                    else if (adjObjs[1, 2].name != "0")
-                        adjObjs[1, 2].GetComponent<Plane>().swtchPlayer = true;
-                    //adjObjs[j + 1].GetComponent<Plane>().swtchPlayer = true;
-
-                    //Debug.Log(Input.mousePosition);
-
-                    //Debug.Log(emptyAdj[j].name);
-                    //int changed = Int32.Parse(emptyPlaneArrays[j].name) - 1;
-                    /*if (adjObjs[j].name == changed.ToString())
-                        GameObject.Find(changed.ToString()).GetComponent<Plane>().swtchPlayer = true;*/
-                    //emptyPlaneArrays[i].GetComponent<Plane>().swtchPlayer = true;
-                }
-
-                if (SwipeTest.instance.swpL && adjObjs[i, 0].CompareTag("Occupied") && adjObjs[i, 0].name != "0")
-                {
-                    if (Input.mousePosition.x > 540 && adjObjs[0, 0].name != "0")
-                        adjObjs[0, 0].GetComponent<Plane>().swtchPlayer = true;
-                    else if (adjObjs[1, 0].name != "0")
-                        adjObjs[1, 0].GetComponent<Plane>().swtchPlayer = true;
-
-                    //adjObjs[i, 0].GetComponent<Plane>().swtchPlayer = true;
-                    //Debug.Log(emptyAdj[j].name);
-                    /*int changed = Int32.Parse(emptyPlaneArrays[j].name) - 1;
-                    if (emptyAdj[j].name == changed.ToString())
-                        GameObject.Find(changed.ToString()).GetComponent<Plane>().swtchPlayer = true;*/
-                    //emptyPlaneArrays[i].GetComponent<Plane>().swtchPlayer = true;
-                }
-
-                if (SwipeTest.instance.swpU && adjObjs[i, 1].CompareTag("Occupied") && adjObjs[i, 1].name != "0")
-                {
-                    if (Input.mousePosition.x > 540 && adjObjs[0, 1].name != "0")
-                        adjObjs[0, 1].GetComponent<Plane>().swtchPlayer = true;
-                    else if (adjObjs[1, 1].name != "0")
-                        adjObjs[1, 1].GetComponent<Plane>().swtchPlayer = true;
-
-                    //adjObjs[i, 1].GetComponent<Plane>().swtchPlayer = true;
-                    //Debug.Log(emptyAdj[j].name);
-                    /*int changed = Int32.Parse(emptyPlaneArrays[j].name) - 1;
-                    if (emptyAdj[j].name == changed.ToString())
-                        GameObject.Find(changed.ToString()).GetComponent<Plane>().swtchPlayer = true;*/
-                    //emptyPlaneArrays[i].GetComponent<Plane>().swtchPlayer = true;
-                }
-
-                if (SwipeTest.instance.swpD && adjObjs[i, 3].CompareTag("Occupied") && adjObjs[i, 3].name != "0")
-                {
-                    if (Input.mousePosition.x > 540 && adjObjs[0, 3].name != "0")
-                        adjObjs[0, 3].GetComponent<Plane>().swtchPlayer = true;
-                    else if (adjObjs[1, 3].name != "0")
-                        adjObjs[1, 3].GetComponent<Plane>().swtchPlayer = true;
-                    
-
-                    //adjObjs[i, 3].GetComponent<Plane>().swtchPlayer = true;
-
-                    //Debug.Log(emptyAdj[j].name);
-                    /*int changed = Int32.Parse(emptyPlaneArrays[j].name) - 1;
-                    if (emptyAdj[j].name == changed.ToString())
-                        GameObject.Find(changed.ToString()).GetComponent<Plane>().swtchPlayer = true;*/
-                    //emptyPlaneArrays[i].GetComponent<Plane>().swtchPlayer = true;
-                }
-
-                /*else
-                {
-                    SwipeTest.instance.swpR = false;
-                    SwipeTest.instance.swpL = false;
-                    SwipeTest.instance.swpU = false;
-                    SwipeTest.instance.swpD = false;
-                }*/
-
-                /*else
-                {
-                    Debug.Log("elif");
-                }*/
-            }
-
-        }
-
-        // komþularý döndürüp 1 eklediðimizde plane ediyor ise sola swipe yapmalý
-        // komþularýmýz zaten listede emptyAdj[]
-
-        /*else
-        {
-            SwipeTest.instance.swpR = false;
-            SwipeTest.instance.swpL = false;
-            SwipeTest.instance.swpU = false;
-            SwipeTest.instance.swpD = false;
-        }*/
-
-
-
-        /*if(obj1 == "blue" && obj2 == "orange" && obj3 == "purple" && obj4 == "green" && obj5 == "orange" && obj6 == "blue" && obj7 == "red" && obj8 == "green")
-        {
-            winGame = true;
-            Debug.Log("win aq");
-            Win();
-        }*/
     }
 
     public void Win()

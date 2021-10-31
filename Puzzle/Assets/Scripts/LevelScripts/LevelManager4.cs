@@ -13,7 +13,7 @@ public class LevelManager4 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.obj1 == "blue" && GameManager.instance.obj2 == "green" && GameManager.instance.obj3 == "orange" && GameManager.instance.obj4 == "green" && GameManager.instance.obj5 == "blue" && GameManager.instance.obj6 == "red" && GameManager.instance.obj7 == "purple") //GameManager.instance.obj8 == "orange")
+        if (GameManager.instance.obj1 == "yellow" && GameManager.instance.obj2 == "green" && GameManager.instance.obj3 == "green" && GameManager.instance.obj4 == "blue" && GameManager.instance.obj5 == "red" && GameManager.instance.obj6 == "yellow" && GameManager.instance.obj7 == "purple") //GameManager.instance.obj8 == "orange")
         {
             GameManager.instance.winGame = true;
             Debug.Log("win aq");

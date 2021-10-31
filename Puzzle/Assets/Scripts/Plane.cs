@@ -6,7 +6,7 @@ public class Plane : MonoBehaviour
 {
     public List<GameObject> playerList = new List<GameObject>();
 
-    public List<int> adjList = new List<int>();
+    public List<GameObject> adjList = new List<GameObject>();
 
     //public GameObject[] emptyAdj = new GameObject[4];
 
@@ -21,7 +21,7 @@ public class Plane : MonoBehaviour
     void Update()
     {
         //Debug.Log(playerList[0]);
-        if (swtchPlayer)
+        /*if (swtchPlayer)
         {
             SwipeTest.instance.player = playerList[0].transform;
             //GameManager.instance.swp.GetComponent<SwipeTest>().player = playerList[0].transform;
@@ -33,14 +33,13 @@ public class Plane : MonoBehaviour
         else
         {
             //SwipeTest.instance.player = null;
-        }
+        }*/
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Cube"))
         {
-            gameObject.tag = "Occupied";
             playerList.Add(other.gameObject);
         }
     }
@@ -49,10 +48,7 @@ public class Plane : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Cube"))
         {
-            gameObject.tag = "Empty";
             playerList.Remove(other.gameObject);
-            swtchPlayer = false;
-            SwipeTest.instance.player = null;
         }
     }
 }

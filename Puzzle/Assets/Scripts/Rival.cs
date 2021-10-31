@@ -18,7 +18,6 @@ public class Rival : MonoBehaviour
     public GameObject c5p;
     public GameObject c6p;
     public GameObject c7p;
-    public GameObject c8p;
 
 
     [Header("Rival Cubes")]
@@ -30,7 +29,6 @@ public class Rival : MonoBehaviour
     public GameObject c5;
     public GameObject c6;
     public GameObject c7;
-    public GameObject c8;
 
     public static Rival instance;
 
@@ -54,16 +52,11 @@ public class Rival : MonoBehaviour
 
     public IEnumerator AI()
     {
-        hand.transform.DOMove(c8p.transform.position, 1f).SetEase(Ease.Linear);
+        hand.transform.DOMove(c7p.transform.position, 1f).SetEase(Ease.Linear);
         yield return new WaitForSeconds(0.8f);
         hand.GetComponent<Animator>().SetBool("finger", true);
         yield return new WaitForSeconds(0.2f);
         //hand.transform.DOMove(new Vector3(0, 1.5f, 15), 0.5f);
-
-        c8.transform.Translate(Vector3.right * 3.2f);
-
-        hand.transform.DOMove(c7p.transform.position, 1).SetEase(Ease.Linear);
-        yield return new WaitForSeconds(aiThink);
 
         c7.transform.Translate(Vector3.right * 3.2f);
 
@@ -162,11 +155,6 @@ public class Rival : MonoBehaviour
 
         c3.transform.Translate(Vector3.down * 3.2f);
 
-        hand.transform.DOMove(c8p.transform.position, 1).SetEase(Ease.Linear);
-        yield return new WaitForSeconds(aiThink);
-
-        c8.transform.Translate(Vector3.down * 3.2f);
-
         hand.transform.DOMove(c4p.transform.position, 1).SetEase(Ease.Linear);
         yield return new WaitForSeconds(aiThink);
 
@@ -176,11 +164,6 @@ public class Rival : MonoBehaviour
         yield return new WaitForSeconds(aiThink);
 
         c2.transform.Translate(Vector3.up * 3.2f);
-
-        hand.transform.DOMove(c8p.transform.position, 1).SetEase(Ease.Linear);
-        yield return new WaitForSeconds(aiThink);
-
-        c8.transform.Translate(Vector3.left * 3.2f);
 
         hand.transform.DOMove(c3p.transform.position, 1).SetEase(Ease.Linear);
         yield return new WaitForSeconds(aiThink);
@@ -192,11 +175,6 @@ public class Rival : MonoBehaviour
 
         c5.transform.Translate(Vector3.right * 3.2f);
 
-        hand.transform.DOMove(c8p.transform.position, 1).SetEase(Ease.Linear);
-        yield return new WaitForSeconds(aiThink);
-
-        c8.transform.Translate(Vector3.down * 3.2f);
-
         hand.transform.DOMove(c2p.transform.position, 1).SetEase(Ease.Linear);
         yield return new WaitForSeconds(aiThink);
 
@@ -206,6 +184,17 @@ public class Rival : MonoBehaviour
         yield return new WaitForSeconds(aiThink);
 
         c4.transform.Translate(Vector3.left * 3.2f);
+
+        hand.transform.DOMove(c2p.transform.position, 1).SetEase(Ease.Linear);
+        yield return new WaitForSeconds(aiThink);
+
+        c2.transform.Translate(Vector3.down * 3.2f);
+
+        hand.transform.DOMove(c4p.transform.position, 1).SetEase(Ease.Linear);
+        yield return new WaitForSeconds(aiThink);
+
+        c4.transform.Translate(Vector3.down * 3.2f);
+
 
         hand.transform.DOMove(new Vector3(0, 1.5f, 15), 1);
         hand.GetComponent<Animator>().SetBool("finger", false);

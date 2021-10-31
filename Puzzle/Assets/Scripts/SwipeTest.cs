@@ -11,7 +11,11 @@ public class SwipeTest : MonoBehaviour
     public bool swpD;
 
     public Swipe swipeControls;
-    public Transform player;
+    
+    public Transform playerL;
+    public Transform playerR;
+    public Transform playerU;
+    public Transform playerD;
 
 
     public static SwipeTest instance;
@@ -54,31 +58,43 @@ public class SwipeTest : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
 
-        player.transform.Translate(Vector3.left * 3.2f);
+        playerL.transform.Translate(Vector3.left * 3.2f);
         swpL = false;
+
+        yield return new WaitForSeconds(0.1f);
+        playerL = null;
     }
 
     public IEnumerator SwpR()
     {
         yield return new WaitForSeconds(0.1f);
 
-        player.transform.Translate(Vector3.right * 3.2f);
+        playerR.transform.Translate(Vector3.right * 3.2f);
         swpR = false;
+
+        yield return new WaitForSeconds(0.1f);
+        playerR = null;
     }
 
     public IEnumerator SwpU()
     {
         yield return new WaitForSeconds(0.1f);
 
-        player.transform.Translate(Vector3.down * 3.2f);
+        playerU.transform.Translate(Vector3.down * 3.2f);
         swpU = false;
+
+        yield return new WaitForSeconds(0.1f);
+        playerU = null;
     }
 
     public IEnumerator SwpD()
     {
         yield return new WaitForSeconds(0.1f);
 
-        player.transform.Translate(Vector3.up * 3.2f);
+        playerD.transform.Translate(Vector3.up * 3.2f);
         swpD = false;
+
+        yield return new WaitForSeconds(0.1f);
+        playerD = null;
     }
 }
